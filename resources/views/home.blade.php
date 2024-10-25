@@ -72,13 +72,25 @@
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">
-                            <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <a href=""><i class="ti-heart"></i></a>
+                            @if(!Session::get('USER_INFO'))
+                        <a href="{{url('/auth/tumblr')}}">
+                            Log With:
                             <div class="dropdown cart">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-cart-plus"></i>
+                                    <span class="ti-tumblr"></span>
                                 </a>
+                            @else
+                            <a href="#">
+                            {{ Session::get('USER_INFO')->name}}
+                            <div class="dropdown cart">
+                                 </a>
+                            </div>
+                            <br>
+                            <a href="{{url('/auth/tumblr/logout')}}" style="color:red">
+                            <div class="dropdown cart">
+                                Log Out:
+                                <span class="ti-tumblr"></span>
+                            </a>
+                            @endif
                                 <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="single_product">
 
